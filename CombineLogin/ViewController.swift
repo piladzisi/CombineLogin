@@ -30,10 +30,26 @@ class ViewController: UIViewController {
             .assign(to: \.isEnabled, on: loginButton)
     }
 
+    @IBAction private func nameChanged(_ sender: UITextField) {
+        nameText = sender.text ?? ""
+    }
+
+    @IBAction private func securityCodeChanged(_ sender: UITextField) {
+        securityCodeText = sender.text ?? ""
+    }
+
+    @IBAction private func passwordChanged(_ sender: UITextField) {
+        passwordText = sender.text ?? ""
+    }
+
+    @IBAction private func confirmPasswordChanged(_ sender: UITextField) {
+        confirmPasswordText = sender.text ?? ""
+    }
+
     private var validToSubmit: AnyPublisher<Bool, Never> {
-        return Publishers.CombineLatest4($nameText, $securityCodeText, $passwordText, $confirmPasswordText)
+        return Publishers.CombineLatest4( $nameText, $securityCodeText, $passwordText, $confirmPasswordText)
             .map { name, code, password, confirmPassword in
-                !name.isEmpty && code % 3 == 0 && !password.isEmpty && !confirmPassword.isEmpty && password == confirmPassword
+                !name.isEmpty 
             }.eraseToAnyPublisher()
     }
 }
