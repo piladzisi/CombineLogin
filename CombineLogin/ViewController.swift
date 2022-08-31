@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     @Published private var nameText: String = ""
-    @Published private var securityCodeText: String = ""
+    @Published private var securityCodeText: Int = 0
     @Published private var passwordText: String = ""
     @Published private var confirmPasswordText: String = ""
 
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func securityCodeChanged(_ sender: UITextField) {
-        securityCodeText = sender.text ?? ""
+        securityCodeText = Int(sender.text ?? "0") ?? 0
     }
 
     @IBAction private func passwordChanged(_ sender: UITextField) {
@@ -49,7 +49,13 @@ class ViewController: UIViewController {
     private var validToSubmit: AnyPublisher<Bool, Never> {
         return Publishers.CombineLatest4( $nameText, $securityCodeText, $passwordText, $confirmPasswordText)
             .map { name, code, password, confirmPassword in
-                !name.isEmpty 
+                !name.isEmpty &&
+                code % 3 == 0 &&
+                !password.isEmpty &&
+                !confirmPassword.isEmpty &&
+                password.count >= 6 &&
+                password == confirmPassword
+
             }.eraseToAnyPublisher()
     }
 }
