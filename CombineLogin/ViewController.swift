@@ -33,11 +33,7 @@ class ViewController: UIViewController {
     private var validToSubmit: AnyPublisher<Bool, Never> {
         return Publishers.CombineLatest4($nameText, $securityCodeText, $passwordText, $confirmPasswordText)
             .map { name, code, password, confirmPassword in
-                !name.isEmpty &&
-                code % 3 == 0 &&
-                !password.isEmpty &&
-                !confirmPassword.isEmpty &&
-                password == confirmPassword
+                !name.isEmpty && code % 3 == 0 && !password.isEmpty && !confirmPassword.isEmpty && password == confirmPassword
             }.eraseToAnyPublisher()
     }
 }
