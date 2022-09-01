@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     @Published private var nameText: String = ""
-    @Published private var securityCodeText: Int = 0
+    @Published private var securityCodeText: Int?
     @Published private var passwordText: String = ""
     @Published private var confirmPasswordText: String = ""
 
@@ -35,7 +35,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func securityCodeChanged(_ sender: UITextField) {
-        securityCodeText = Int(sender.text ?? "0") ?? 0
+        if let code = sender.text {
+            securityCodeText = Int(code)
+        } else {
+            securityCodeText = nil
+        }
     }
 
     @IBAction private func passwordChanged(_ sender: UITextField) {
@@ -50,8 +54,8 @@ class ViewController: UIViewController {
         return Publishers.CombineLatest4( $nameText, $securityCodeText, $passwordText, $confirmPasswordText)
             .map { name, code, password, confirmPassword in
                 !name.isEmpty &&
-                code != 0 &&
-                code % 3 == 0 &&
+                code != nil &&
+                (code ?? 0)%3 == 0 &&
                 !password.isEmpty &&
                 !confirmPassword.isEmpty &&
                 password.count >= 6 &&
