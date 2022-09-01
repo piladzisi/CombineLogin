@@ -24,7 +24,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                         <connections>
-                                            <action selector="nameChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="sGp-iy-nCU"/>
+                                            <action selector="nameChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="pt9-iG-fVF"/>
+                                            <action selector="nameChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="qhv-aJ-HyM"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Security code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-mA-9H3">
@@ -32,6 +33,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
                                         <connections>
+                                            <action selector="securityCodeChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="8rw-61-VQv"/>
                                             <action selector="securityCodeChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="JIB-qq-9jV"/>
                                         </connections>
                                     </textField>
@@ -40,7 +42,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         <connections>
-                                            <action selector="passwordChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="sNa-Sn-Gwn"/>
+                                            <action selector="passwordChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="FfK-P3-fKQ"/>
+                                            <action selector="passwordChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="U2I-qh-V2J"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-Db-BEf">
@@ -49,6 +52,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                         <connections>
                                             <action selector="confirmPasswordChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ORF-1q-QPi"/>
+                                            <action selector="confirmPasswordChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Ria-Og-y2o"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLY-0e-dCo">
@@ -79,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="103"/>
+            <point key="canvasLocation" x="294" y="105"/>
         </scene>
     </scenes>
     <resources>

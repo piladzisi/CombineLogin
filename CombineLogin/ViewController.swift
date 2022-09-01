@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         return Publishers.CombineLatest4( $nameText, $securityCodeText, $passwordText, $confirmPasswordText)
             .map { name, code, password, confirmPassword in
                 !name.isEmpty &&
+                code != 0 &&
                 code % 3 == 0 &&
                 !password.isEmpty &&
                 !confirmPassword.isEmpty &&
